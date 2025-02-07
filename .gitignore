@@ -9,6 +9,7 @@ yarn-error.log*
 .pnp.js
 
 .vscode/*
+.idea/vcs.xml
 
 keys/
 .env
