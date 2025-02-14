@@ -10,6 +10,7 @@
     "prisma:migrate:prod": "prisma migrate deploy"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.5",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.1",
     "prisma": "^6.3.1",
@@ -20,6 +21,7 @@
   "private": true,
   "dependencies": {
     "@prisma/client": "^6.3.1",
+    "compression": "^1.8.0",
     "dotenv": "^16.4.7",
     "env-var": "^7.5.0",
     "express": "^4.21.2"
