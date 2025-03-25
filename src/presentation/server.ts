@@ -1,6 +1,7 @@
 import express, { Router } from 'express'
 import path from "node:path";
 import compression from "compression";
+import any = jasmine.any;
 
 interface Options {
     port: number;
@@ -9,10 +10,13 @@ interface Options {
 }
 
 export class Server {
-    private app = express();
+
+    public readonly  app = express();
+    private serverListener? : any;
     private readonly port: number;
     private readonly publicPath: string;
     private readonly routes: Router;
+
     constructor(options: Options) {
         const { port, routes, public_path = 'public'} = options;
         this.port = port;
@@ -38,8 +42,13 @@ export class Server {
             res.sendFile(indexPath);
         })
 
-        this.app.listen(this.port, ()=> {
+        this.serverListener = this.app.listen(this.port, ()=> {
             console.log(`Server running on port ${this.port}`);
         });
     }
+
+    public close(){
+        this.serverListener?.close();
+    }
+
 }
